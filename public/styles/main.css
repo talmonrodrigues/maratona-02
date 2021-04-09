@@ -111,3 +111,30 @@ a {
 .flex {
   display: flex;
 }
+
+.profile-default {
+	background: #F1972C;
+	display: flex;
+	border-radius: 50%;
+	align-items: center !important;
+	align-self: center;
+}
+
+.profile-default div{
+	width: 100%;
+	color: white;
+}
+
+.profile-lg{
+	height: 12rem;
+	font-size: 4rem;
+	margin-bottom: 1.5rem;
+	cursor: default;
+}
+
+.profile-sm{
+	height: 4rem;
+	width: 4rem;
+	text-align: center;
+	font-size: 1.5rem;
+}

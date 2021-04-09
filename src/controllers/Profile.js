@@ -2,7 +2,14 @@ const Profile = require('../model/Profile');
 
 module.exports = {
    async index(req, res) {
-      return res.render('profile', { profile: await Profile.get() });
+	  
+		const profile = await Profile.get();
+		const fristName = profile.name;
+		const fristLastname = profile.lastname;
+
+		const nameProfile = fristName.substring(0, 1) + fristLastname.substring(0, 1);
+
+      return res.render('profile', { profile: profile, nameProfile: nameProfile });
    },
 
    async update(req, res) {

@@ -12,7 +12,7 @@ module.exports = {
          done: 0,
          total: jobs.length,
       };
-
+	  
       //Total de horas por dia de cada job em "progress"
       let jobTotalHours = 0;
 
@@ -42,7 +42,12 @@ module.exports = {
       //Qtd de hora que quero trabalhar menos a quantidade de hora/dia de caba job em "progress"
       const freeHours = profile['hours-per-day'] - jobTotalHours;
 
+      const fristName = profile.name;
+      const fristLastname = profile.lastname;
+
+      const nameProfile = fristName.substring(0, 1) + fristLastname.substring(0, 1);
+
       //esse "jobs" é a referência no index para o ejs
-      return res.render('index', { jobs: updatedJobs, profile: profile, statusCount: statusCount, freeHours: freeHours }); //esse jobs é um objeto passado para o ejs index
+      return res.render('index', { jobs: updatedJobs, profile: profile, statusCount: statusCount, freeHours: freeHours, nameProfile: nameProfile }); //esse jobs é um objeto passado para o ejs index
    },
 };

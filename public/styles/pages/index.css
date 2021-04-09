@@ -40,7 +40,7 @@
 
 #avatar-profile p {
   font-size: 1.25rem; /* 20px of 16px root*/
-  line-height: 1.875rem; /*30px of 16px root*/
+  line-height: 0.875rem; /*30px of 16px root*/
   margin-right: 1.25rem;
 
   font-weight: 600;

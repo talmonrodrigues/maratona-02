@@ -22,10 +22,12 @@
                <a href="/profile" id="avatar-profile">
                   <p><%= profile.name %> <span>Ver perfil</span></p>
                   <% if( profile.avatar.length > 0 ) { %>
-					<img src=" <%= profile.avatar %> " alt=" <%= profile.name %> " />
-					<% } else { %>
-					<img src="https://img.icons8.com/plasticine/250/000000/user.png"/>
-				<% } %> 
+                  <img src=" <%= profile.avatar %> " alt=" <%= profile.name %> " />
+                  <% } else { %>
+                  <div class="profile-default profile-sm">
+                     <div><%= nameProfile %></div>
+                  </div>
+                  <% } %>
                </a>
             </section>
 
@@ -63,36 +65,32 @@
             <h1 class="sr-only">Trabalhos</h1>
 
             <div class="cards">
-				<% if( statusCount.total > 0 ) { %>
-					<% jobs.forEach((job) => { %>
-						<div class="card <%= job.status %>" data-id="<%= job.id %>">
-							<div class="id column"><%= job.id %></div>
-							<div class="name column"><%= job.name %></div>
-							<div class="deadline column">
-								<span>Prazo</span>
-								<p><% if(job.status === 'progress') { %> <%= job.remaining %> dias para entrega <% } else { %> Prazo encerrado <% } %></p>
-							</div>
-							<div class="amount column">
-								<span>Valor</span>
-								<p>R$ <%= job.budget.toFixed(2).replace('.', ',') %></p>
-							</div>
-							<div class="status badge column"><%= job.status === 'done' ? 'Encerrado' : 'Em andamento' %></div>
-							<div class="actions column flex">
-								<p class="sr-only">Ações</p>
-								<a href="/job/<%= job.id %>" class="button white edit" title="Editar Job">
-									<img src="/images/edit-24.svg" alt="Editar Job" />
-								</a>
-								<button class="delete button white" title="Excluir Job">
-									<img src="/images/trash-24.svg" alt="Excluir Job" />
-								</button>
-							</div>
-						</div>
-					<% }) %>
-				<% } else { %>
-					<div class="card" style="display:block">
-						Você não possui nenhum Job cadastrado.
-					</div>
-				<% } %>
+               <% if( statusCount.total > 0 ) { %> <% jobs.forEach((job) => { %>
+               <div class="card <%= job.status %>" data-id="<%= job.id %>">
+                  <div class="id column"><%= job.id %></div>
+                  <div class="name column"><%= job.name %></div>
+                  <div class="deadline column">
+                     <span>Prazo</span>
+                     <p><% if(job.status === 'progress') { %> <%= job.remaining %> dias para entrega <% } else { %> Prazo encerrado <% } %></p>
+                  </div>
+                  <div class="amount column">
+                     <span>Valor</span>
+                     <p>R$ <%= job.budget.toFixed(2).replace('.', ',') %></p>
+                  </div>
+                  <div class="status badge column"><%= job.status === 'done' ? 'Encerrado' : 'Em andamento' %></div>
+                  <div class="actions column flex">
+                     <p class="sr-only">Ações</p>
+                     <a href="/job/<%= job.id %>" class="button white edit" title="Editar Job">
+                        <img src="/images/edit-24.svg" alt="Editar Job" />
+                     </a>
+                     <button class="delete button white" title="Excluir Job">
+                        <img src="/images/trash-24.svg" alt="Excluir Job" />
+                     </button>
+                  </div>
+               </div>
+               <% }) %> <% } else { %>
+               <div class="card" style="display: block">Você não possui nenhum Job cadastrado.</div>
+               <% } %>
                <!-- end card -->
             </div>
             <!-- end cards -->
