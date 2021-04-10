@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <%- include("parts/page-head") %>
+
+      <link rel="stylesheet" href="/styles/partials/forms.css" />
+      <link rel="stylesheet" href="/styles/pages/login.css" />
+   </head>
+
+   <body id="page-profile">
+      <div class="container flex animate-up delay-2 vh-100">
+         <main>
+            <form id="form-login" method="POST">
+               <div class="card-logo flex">
+                  <img src="/images/favicon.png" />
+                  <span>JobsCalc</span>
+               </div>
+               <fieldset>
+                  <div class="separator light"></div>
+                  <div class="input-group">
+                     <div class="input-wrapper">
+                        <label for="user">Usuário</label>
+                        <input type="text" id="user" name="user" placeholder="admin" required="" />
+                     </div>
+                  </div>
+                  <div class="input-group">
+                     <div class="input-wrapper">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" placeholder="admin" required="" />
+                     </div>
+                  </div>
+                  <div class="input-group">
+                     <button class="button green" form="form-login" type="submit">Entrar</button>
+                  </div>
+               </fieldset>
+            </form>
+         </main>
+      </div>
+      <!-- end container -->
+   </body>
+</html>

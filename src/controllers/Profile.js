@@ -2,14 +2,17 @@ const Profile = require('../model/Profile');
 
 module.exports = {
    async index(req, res) {
-	  
-		const profile = await Profile.get();
-		const fristName = profile.name;
-		const fristLastname = profile.lastname;
+      const profile = await Profile.get();
+      const fristName = profile.name;
+      const fristLastname = profile.lastname;
 
-		const nameProfile = fristName.substring(0, 1) + fristLastname.substring(0, 1);
+      const nameProfile = fristName.substring(0, 1) + fristLastname.substring(0, 1);
 
-      return res.render('profile', { profile: profile, nameProfile: nameProfile });
+      if (req.session.user) {
+         return res.render('profile', { profile: profile, nameProfile: nameProfile });
+      } else {
+         return res.redirect('/');
+      }
    },
 
    async update(req, res) {

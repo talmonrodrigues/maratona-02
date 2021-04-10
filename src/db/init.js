@@ -29,6 +29,13 @@ const initDb = {
 			created_at DATETIME
 		)`);
 
+      await db.exec(`CREATE TABLE seg_user 
+		(
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			username TEXT,
+			password TEXT
+		)`);
+
       await db.run(`INSERT INTO profile 
 	  	(
 			name,
@@ -76,7 +83,18 @@ const initDb = {
 			1617849698165
 		)`);
 
-    //   await db.run(`UPDATE profile SET value_hour=75`); // atualizar dados de um campo
+      await db.run(`INSERT INTO seg_user 
+	  	(
+			id,
+			username,
+			password
+		) VALUES (
+			1,
+			'admin',
+			'admin'
+		)`);
+
+      //   await db.run(`UPDATE profile SET value_hour=75`); // atualizar dados de um campo
 
       await db.close();
    },

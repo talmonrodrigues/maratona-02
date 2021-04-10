@@ -1,5 +1,6 @@
 const Job = require('../model/Job');
 const Profile = require('../model/Profile');
+const SegUser = require('../model/SegUser');
 const JobService = require('../utils/JobService');
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
          done: 0,
          total: jobs.length,
       };
-	  
+
       //Total de horas por dia de cada job em "progress"
       let jobTotalHours = 0;
 
@@ -47,7 +48,22 @@ module.exports = {
 
       const nameProfile = fristName.substring(0, 1) + fristLastname.substring(0, 1);
 
-      //esse "jobs" é a referência no index para o ejs
-      return res.render('index', { jobs: updatedJobs, profile: profile, statusCount: statusCount, freeHours: freeHours, nameProfile: nameProfile }); //esse jobs é um objeto passado para o ejs index
+      if (req.session.user) {
+         res.render('index', { jobs: updatedJobs, profile: profile, statusCount: statusCount, freeHours: freeHours, nameProfile: nameProfile });
+      } else {
+         return res.render('login');
+      }
+   },
+   async login(req, res) {
+      const segUser = await SegUser.get();
+      const user = segUser.username;
+      const password = segUser.password;
+
+      if (req.body.password == password && req.body.user == user) {
+         req.session.user = user;
+         res.redirect('/');
+      } else {
+         return res.render('login');
+      }
    },
 };

@@ -4,7 +4,11 @@ const JobService = require('../utils/JobService');
 
 module.exports = {
    create(req, res) {
-      return res.render('job');
+      if (req.session.user) {
+         return res.render('job');
+      } else {
+         return res.redirect('/');
+      }
    },
    async save(req, res) {
       await Job.create({
@@ -30,7 +34,11 @@ module.exports = {
 
       job.budget = JobService.calulateBudget(job, profile['value-hour']);
 
-      return res.render('job-edit', { job });
+      if (req.session.user) {
+         return res.render('job-edit', { job });
+      } else {
+         return res.redirect('/');
+      }
    },
    async update(req, res) {
       const jobId = req.params.id;

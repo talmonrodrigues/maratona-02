@@ -1,7 +1,17 @@
 const express = require('express');
+const session = require('express-session');
+// const bodyParser = require('body-parser');
 const server = express();
 const routes = require('./routes');
 const path = require('path');
+
+server.use(
+   session({
+      secret: 'qwertyuiop',
+      resave: true,
+      saveUninitialized: true,
+   })
+);
 
 //usando template engine
 server.set('view engine', 'ejs');
@@ -14,8 +24,9 @@ server.use(express.static('public'));
 
 // habilitar o req.body
 server.use(express.urlencoded({ extended: true }));
+// server.use(bodyParser.urlencoded({ extended: true }));
 
 //routes
 server.use(routes);
 
-server.listen(3000, () => console.log('rodando'));
+server.listen(3000, () => console.log('server runnig'));

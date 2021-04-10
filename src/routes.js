@@ -5,6 +5,7 @@ const JobController = require('./controllers/Job');
 const DashboardController = require('./controllers/Dashboard');
 
 routes.get('/', DashboardController.index);
+routes.post('/', DashboardController.login);
 routes.get('/job', JobController.create);
 routes.post('/job', JobController.save);
 routes.get('/job/:id', JobController.show);
