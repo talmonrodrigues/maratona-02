@@ -26,9 +26,9 @@ Todas as alterações ​​neste projeto serão documentadas.
 ## Mudado
 
 - Ajustado na inclusão e alteração de jobs, o layout das páginas aumentado o campo "nome do job.
-- Correção na inclusão e alteração de jobs, adicionando obrigatoriedade nos formulário de cadastro.
-- Correção na alteração do profile, adicionando obrigatoriedade no formulário de cadastro.
-- Correção no "res.send('Job not found')", quando o usuário informa um id que não existe na base de dados.
+- Ajustado na inclusão e alteração de jobs, adicionando obrigatoriedade nos formulário de cadastro.
+- Ajustado na alteração do profile, adicionando obrigatoriedade no formulário de cadastro.
+- Ajustado no "res.send('Job not found')", quando o usuário informa um id que não existe na base de dados.
 
 ---
 
