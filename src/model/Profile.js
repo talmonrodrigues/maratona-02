@@ -9,8 +9,11 @@ module.exports = {
       await db.close();
 
       return {
+         id: data.id,
          name: data.name,
          lastname: data.lastname,
+         username: data.username,
+         password: data.password,
          avatar: data.avatar,
          'monthly-budget': data.monthly_budget,
          'hours-per-day': data.hours_per_day,
@@ -25,6 +28,8 @@ module.exports = {
       await db.run(`UPDATE profile SET
          name = "${newData.name}",
          lastname = "${newData.lastname}",
+		 username= "${newData.username}",
+		 password= "${newData.password}",
          avatar = "${newData.avatar}",
          monthly_budget = ${newData['monthly-budget']},
          hours_per_day = ${newData['hours-per-day']},

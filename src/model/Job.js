@@ -14,6 +14,7 @@ module.exports = {
          name: job.name,
          'daily-hours': job.daily_hours,
          'total-hours': job.total_hours,
+         created_by: job.created_by,
          created_at: job.created_at,
       }));
    },
@@ -43,11 +44,12 @@ module.exports = {
       const db = await Database();
 
       await db.run(`INSERT INTO jobs (
-			name, daily_hours, total_hours, created_at
+			name, daily_hours, total_hours, created_by, created_at
 		) VALUES (
 			"${newJob.name}",
 			${newJob['daily-hours']},
 			${newJob['total-hours']},
+			${newJob.created_by},
 			${newJob.created_at}
 		)`);
 

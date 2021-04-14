@@ -3,18 +3,35 @@ const Job = require('../model/Job');
 const JobService = require('../utils/JobService');
 
 module.exports = {
-   create(req, res) {
+   async create(req, res) {
+      const jobs = await Job.get();
+      const profile = await Profile.get();
+
+      let jobTotalHours = 0;
+
+      const updatedJobs = await jobs.map(job => {
+         const remaining = JobService.remainingDays(job);
+         const status = remaining <= 0 ? 'done' : 'progress';
+
+         jobTotalHours = status == 'progress' ? jobTotalHours + Number(job['daily-hours']) : jobTotalHours;
+      });
+
+      const freeHours = profile['hours-per-day'] - jobTotalHours;
+
       if (req.session.user) {
-         return res.render('job');
+         return res.render('job', { freeHours: freeHours });
       } else {
          return res.redirect('/');
       }
    },
    async save(req, res) {
+      const profile = await Profile.get();
+
       await Job.create({
          name: req.body.name,
          'daily-hours': req.body['daily-hours'],
          'total-hours': req.body['total-hours'],
+         created_by: profile.id,
          created_at: Date.now(),
       });
 
@@ -27,7 +44,7 @@ module.exports = {
       const job = jobs.find(job => Number(job.id) === Number(jobId));
 
       if (!job) {
-         return res.send('Job not found');
+         return res.redirect('/404');
       }
 
       const profile = await Profile.get();
@@ -59,5 +76,8 @@ module.exports = {
       await Job.delete(jobId);
 
       return res.redirect('/');
+   },
+   error(req, res) {
+      return res.render('./parts/404');
    },
 };

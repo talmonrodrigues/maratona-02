@@ -1,100 +1,22 @@
 const Database = require('./config');
 
-// o await faz com o que o js aguarde a conclusão de uma transação
-// para a próxima transação seja executada.
-
 const initDb = {
    async init() {
       const db = await Database();
 
-      await db.exec(`CREATE TABLE profile 
-	  	(
-		 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-			name TEXT,
-			lastname TEXT,
-			avatar TEXT,
-			monthly_budget INT,
-			hours_per_day INT,
-			days_per_week INT,
-			vacation_per_year INT,
-			value_hour INT
-		)`);
+      await db.exec(`CREATE TABLE profile
+	  	(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, lastname TEXT, username TEXT, password TEXT, avatar TEXT, monthly_budget INT, hours_per_day INT, days_per_week INT, vacation_per_year INT, value_hour INT)`);
 
       await db.exec(`CREATE TABLE jobs 
-	  	(
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			name TEXT,
-			daily_hours INT,
-			total_hours INT,
-			created_at DATETIME
-		)`);
-
-      await db.exec(`CREATE TABLE seg_user 
-		(
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			username TEXT,
-			password TEXT
-		)`);
+	  	(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, daily_hours INT, total_hours INT, created_by INT, created_at DATETIME)`);
 
       await db.run(`INSERT INTO profile 
-	  	(
-			name,
-			lastname,
-			avatar,
-			monthly_budget,
-			hours_per_day,
-			days_per_week,
-			vacation_per_year,
-			value_hour
-		) VALUES (
-			"Talmon",
-			"Rodrigues",
-			"https://github.com/talmonrodrigues.png",
-			3000,
-			5,
-			5,
-			4,
-			75
-		)`);
+	  	(name, lastname, username, password, avatar, monthly_budget, hours_per_day, days_per_week, vacation_per_year, value_hour)
+			VALUES ("Talmon", "Rodrigues", "admin", "admin", "https://github.com/talmonrodrigues.png", 8500, 5, 5, 4, 75)`);
 
       await db.run(`INSERT INTO jobs 
-		(
-			name,
-			daily_hours,
-			total_hours,
-			created_at
-		) VALUES (
-			"Pizzaria Guloso",
-			2,
-			1,
-			1617849698165
-		)`);
-
-      await db.run(`INSERT INTO jobs
-	  	(
-			name,
-			daily_hours,
-			total_hours,
-			created_at
-		) VALUES (
-			"OneTwo Project",
-			3,
-			47,
-			1617849698165
-		)`);
-
-      await db.run(`INSERT INTO seg_user 
-	  	(
-			id,
-			username,
-			password
-		) VALUES (
-			1,
-			'admin',
-			'admin'
-		)`);
-
-      //   await db.run(`UPDATE profile SET value_hour=75`); // atualizar dados de um campo
+		(name, daily_hours, total_hours, created_by, created_at)
+			VALUES ("Maratona 2.0", 4, 20, 1, 1617849698165)`);
 
       await db.close();
    },

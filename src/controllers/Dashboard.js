@@ -1,6 +1,5 @@
 const Job = require('../model/Job');
 const Profile = require('../model/Profile');
-const SegUser = require('../model/SegUser');
 const JobService = require('../utils/JobService');
 
 module.exports = {
@@ -54,13 +53,13 @@ module.exports = {
          return res.render('login');
       }
    },
-   async login(req, res) {
-      const segUser = await SegUser.get();
-      const user = segUser.username;
-      const password = segUser.password;
+   async auth(req, res) {
+      const auth = await Profile.get();
+      const username = auth.username;
+      const password = auth.password;
 
-      if (req.body.password == password && req.body.user == user) {
-         req.session.user = user;
+      if (req.body.password === password && req.body.username === username) {
+         req.session.user = username;
          res.redirect('/');
       } else {
          return res.render('login');
