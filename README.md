@@ -6,7 +6,8 @@
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
+  <a href="#memo-licença">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-changelog">Changelog</a>
 </p>
 
 <p align="center">
@@ -48,7 +49,7 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.
 
 ## 📝 Changelog
 
-Todas as alterações ​​neste projeto serão documentadas. Veja o arquivo [LICENSE](.github/CHANGELOG.md) para mais detalhes.
+Todas as alterações ​​neste projeto serão documentadas. Veja o arquivo [CHANGELOG](.github/CHANGELOG.md) para mais detalhes.
 
 ---
 
