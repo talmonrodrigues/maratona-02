@@ -40,4 +40,33 @@ module.exports = {
 
       await db.close();
    },
+   async create(newData) {
+      const db = await Database();
+
+      await db.run(`INSERT INTO profile (
+			name,
+			lastname,
+			username,
+			password,
+			avatar,
+			monthly_budget,
+			hours_per_day,
+			days_per_week,
+			vacation_per_year,
+			value_hour
+		) VALUES (
+			"${newData.name}",
+			"${newData.lastname}",
+			"${newData.username}",
+			"${newData.password}",
+			"${newData.avatar}",
+			${newData['monthly-budget']},
+			${newData['hours-per-day']},
+			${newData['days-per-week']},
+			${newData['vacation-per-year']},
+			${newData['value-hour']}
+		)`);
+
+      await db.close();
+   },
 };

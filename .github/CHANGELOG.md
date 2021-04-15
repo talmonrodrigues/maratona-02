@@ -8,7 +8,8 @@ Todas as alterações ​​neste projeto serão documentadas.
 
 ---
 
-	# 1.0.1 - { 2021-04-14 }
+	# 1.0.1 { 2021-04-14 }
+
 ## Adicionado
 
 - Adicionada a página de login.
@@ -22,13 +23,25 @@ Todas as alterações ​​neste projeto serão documentadas.
 - Adicionado na table jobs o campo "created_by".
 - Adicionado no back o identificador do usuário quando incluir um novo job.
 
-
 ## Mudado
 
-- Ajustado na inclusão e alteração de jobs, o layout das páginas aumentado o campo "nome do job.
+- Ajustado na inclusão e alteração de jobs, o layout das páginas aumentando o campo "nome do job.
 - Ajustado na inclusão e alteração de jobs, adicionando obrigatoriedade nos formulário de cadastro.
 - Ajustado na alteração do profile, adicionando obrigatoriedade no formulário de cadastro.
 - Ajustado no "res.send('Job not found')", quando o usuário informa um id que não existe na base de dados.
+
+---	
+
+	# 1.0.2 { 2021-04-15 }
+
+## Adicionado
+
+- Adicionada a página criar conta (sign-up).
+- Adicionado rotina para inclusão de novo profile.
+
+## Mudado
+
+- Ajustado tela de login, adicionando o link para criação de nova conta.
 
 ---
 

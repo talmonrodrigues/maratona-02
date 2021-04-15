@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <%- include("parts/page-head") %>
+
+      <link rel="stylesheet" href="/styles/partials/forms.css" />
+      <link rel="stylesheet" href="/styles/pages/login.css" />
+   </head>
+
+   <body id="page-sign-up">
+      <div class="container flex animate-up delay-2 vh-100 w-50">
+         <main>
+            <div class="card-logo flex">
+               <div class="flex" style="width: 40px">
+                  <a href="/" class="back"><img src="/images/back.svg" alt="" title="Voltar" /></a>
+               </div>
+               <div class="flex" style="width: calc(100% - 40px)">
+                  <img src="/images/favicon.png" />
+                  <span>JobsCalc</span>
+               </div>
+            </div>
+            <div class="separator light"></div>
+            <form id="form-sign-up" method="POST" action="/sign-up">
+               <fieldset>
+                  <legend>Criar Conta</legend>
+                  <legend class="subtitle">Dados Cadastrais</legend>
+                  <div class="input-group">
+                     <div class="input-wrapper">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required="" />
+                     </div>
+                     <div class="input-wrapper">
+                        <label for="lastname">Sobrenome</label>
+                        <input type="text" id="lastname" name="lastname" required="" />
+                     </div>
+                  </div>
+                  <div class="input-group">
+                     <div class="input-wrapper">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" name="username" required="" />
+                     </div>
+                     <div class="input-wrapper">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" required="" />
+                     </div>
+                  </div>
+                  <div style="margin-top: 1.5rem">
+                     <label for="avatar">Link da foto</label>
+                     <input placeholder="https://" type="url" id="avatar" name="avatar" />
+                  </div>
+               </fieldset>
+               <fieldset>
+                  <legend class="subtitle">Planejamento de Jobs</legend>
+                  <div class="input-group">
+                     <div class="input-wrapper">
+                        <label for="monthly-budget">Quanto eu quero ganhar por mês?</label>
+                        <input type="number" step="0.1" id="monthly-budget" name="monthly-budget" placeholder="R$" required="" />
+                     </div>
+                     <div class="input-wrapper">
+                        <label for="hours-per-day">Quantas horas quero trabalhar por dia?</label>
+                        <input type="number" id="hours-per-day" name="hours-per-day" required="" />
+                     </div>
+                     <div class="input-wrapper">
+                        <label for="days-per-week">Quantos dias quero trabalhar por semana?</label>
+                        <input type="number" id="days-per-week" name="days-per-week" required="" />
+                     </div>
+                     <div class="input-wrapper">
+                        <label for="vacation-per-year">Quantas semanas por ano você quer tirar férias?</label>
+                        <input type="number" id="vacation-per-year" name="vacation-per-year" required="" />
+                     </div>
+                  </div>
+               </fieldset>
+               <div class="mt-5 text-right">
+                  <button class="button green" form="form-sign-up" type="submit">Salvar</button>
+               </div>
+            </form>
+         </main>
+      </div>
+      <!-- end container -->
+   </body>
+</html>

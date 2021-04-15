@@ -45,4 +45,37 @@ module.exports = {
 
       return res.redirect('/profile');
    },
+
+   signup(req, res) {
+      return res.render('sign-up');
+   },
+
+   async create(req, res) {
+      const data = req.body;
+
+      const weeksPerYear = 52;
+
+      const weeksPerMonth = (weeksPerYear - data['vacation-per-year']) / 12;
+
+      const weekTotalHours = data['hours-per-day'] * data['days-per-week'];
+
+      const monthlyTotalHours = weekTotalHours * weeksPerMonth;
+
+      const valueHour = data['monthly-budget'] / monthlyTotalHours;
+
+      await Profile.create({
+         name: req.body.name,
+         lastname: req.body.lastname,
+         username: req.body.username,
+         password: req.body.password,
+         avatar: req.body.avatar,
+         'monthly-budget': req.body['monthly-budget'],
+         'hours-per-day': req.body['hours-per-day'],
+         'days-per-week': req.body['days-per-week'],
+         'vacation-per-year': req.body['vacation-per-year'],
+         'value-hour': valueHour,
+      });
+
+      return res.redirect('/');
+   },
 };

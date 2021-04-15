@@ -19,7 +19,11 @@
                </a>
                <span id="notification">
                   <img src="/images/alert-octagon.svg" alt="Alerta" />
-                  <% if( freeHours > 0 ) { %> Você tem <%= freeHours %> horas livres no seu dia <% } else { %> Você não possui hora disponível. <% } %>
+                <% if( freeHours > 0 ) { %> 
+					Você tem <%= freeHours %> horas livres no seu dia
+				<% } else { %>
+					Você não possui hora disponível. 
+				<% } %>
                </span>
                <a href="/profile" id="avatar-profile">
                   <p><%= profile.name %> <span>Ver perfil</span></p>
